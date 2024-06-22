@@ -90,9 +90,12 @@ const DashboardJobPost = () => {
   const [reviewOpen, setReviewOpen] = React.useState(false);
   const handleReviewOpen = (id) => setReviewOpen(id);
   const handleReviewClose = () => setReviewOpen(false);
+
   const [storeInvoiceNumber, setStoreInvoiceNumber] = React.useState();
 
   const [loader, setLoader] = React.useState(false);
+  const [addItemInvoiceData, setAddItemInvoiceData] = React.useState([]);
+
 
   const formData = useFormik({
     initialValues: {
@@ -236,46 +239,50 @@ const DashboardJobPost = () => {
         });
     };
   fetchdata();
-  HandleAddSendInvoices();
 }, []);
 
 const HandleAddSendInvoices =  async () => {
-console.log('formDataInvoice.values formDataInvoice.values',formDataInvoice.values);
-  await axiosInstance
-      .post("api/auth/invoice/add-send",formDataInvoice.values)
-      .then((response) => {
-        if (response.status === 200) {
-          enqueueSnackbar(
-            <Alert
-              style={{
-                width: "100%",
-                padding: "30px",
-                backdropFilter: "blur(8px)",
-                background: "#ff7533 ",
-                fontSize: "19px",
-                fontWeight: 800,
-                lineHeight: "30px",
-              }}
-              icon={false}
-              severity="success"
-            >
-              {response?.data?.message}
-            </Alert>,
-            {
-              variant: "success",
-              iconVariant: true,
-              anchorOrigin: {
-                vertical: "top",
-                horizontal: "center",
-              },
-            }
-          );
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-}
+  const initialValues =  {
+        user_id: addItemInvoiceData?.user_id,
+          invoice_number: storeInvoiceNumber?.invoice_number,
+          job_id: addItemInvoiceData.id,
+          sign_image:'www.img.com'
+      }
+    await axiosInstance
+        .post("api/auth/invoice/add-send",initialValues)
+        .then((response) => {
+          if (response.status === 200) {
+            enqueueSnackbar(
+              <Alert
+                style={{
+                  width: "100%",
+                  padding: "30px",
+                  backdropFilter: "blur(8px)",
+                  background: "#ff7533 ",
+                  fontSize: "19px",
+                  fontWeight: 800,
+                  lineHeight: "30px",
+                }}
+                icon={false}
+                severity="success"
+              >
+                {response?.data?.message}
+              </Alert>,
+              {
+                variant: "success",
+                iconVariant: true,
+                anchorOrigin: {
+                  vertical: "top",
+                  horizontal: "center",
+                },
+              }
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 
 // const HandleAddSendInvoice = async () => {
 //     await axiosInstance
@@ -321,7 +328,6 @@ console.log('formDataInvoice.values formDataInvoice.values',formDataInvoice.valu
 //   };
   
   const completeJobApi = async () => {
-console.log('aaaaaa',formData.values);
     await axiosInstance
       .post("api/auth/jobs/complete-job", formData.values)
       .then((response) => {
@@ -410,6 +416,7 @@ console.log('aaaaaa',formData.values);
       await axiosInstance
         .post("api/auth/rating/add", formik.values)
         .then((response) => {
+          HandleAddSendInvoices()
           if (response.status === 200) {
             setReviewOpen(false);
             enqueueSnackbar(
@@ -904,7 +911,7 @@ console.log('aaaaaa',formData.values);
                                             variant="outlined"
                                             disabled
                                           >
-                                            Wait Please
+                                            Wait For Payment
                                           </Button>
                                         ) : (
                                           <Button
@@ -950,6 +957,7 @@ console.log('aaaaaa',formData.values);
                                               elem?.id
                                             );
                                             setCompleteOpen(true);
+                                            setAddItemInvoiceData(elem);
                                           }}
                                         >
                                           Complete Job

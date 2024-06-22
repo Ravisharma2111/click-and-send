@@ -751,6 +751,7 @@ const DashboardJobPost = ({ formik }) => {
                                       </Badge>
                                     </Box>
                                     <Box>
+                                    {   item?.status === 0  &&
                                       <Button
                                         color="dark"
                                         fullWidth
@@ -760,7 +761,7 @@ const DashboardJobPost = ({ formik }) => {
                                         }
                                         onClick={() =>
                                           router.push(
-                                            `/dashboard/customer/job_post_form/${item?.id}`
+                                            `/dashboard/company/job_post_form/${item?.id}`
                                           )
                                         }
                                         disabled={
@@ -774,7 +775,7 @@ const DashboardJobPost = ({ formik }) => {
                                         }}
                                       >
                                         Edit Job
-                                      </Button>
+                                      </Button> }
                                     </Box>
                                     {item?.bid_id &&
                                       item?.bid_id !== null &&
