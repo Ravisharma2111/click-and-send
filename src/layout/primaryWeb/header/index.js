@@ -393,19 +393,19 @@ const Header = (props) => {
                     sx={{
                       mx: 1,
                       borderBottom: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
+                        router.asPath.startsWith("/dashboard/customer/job_posted")
                           ? "2px solid"
                           : "none",
 
                       color: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
+                        router.asPath.startsWith("/dashboard/customer/job_posted")
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
                       borderColor: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
+                        router.asPath.startsWith("/dashboard/customer/job_posted")
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
-                      borderBottom: router.asPath.startsWith("/dashboard/company/driver/list")
+                      borderBottom: router.asPath.startsWith("/dashboard/customer/job_posted")
                         ? "2px solid"
                         : "",
                       ...theme.typography.subtitle2,
@@ -415,8 +415,44 @@ const Header = (props) => {
                     component={Link}
                     href={
                       user?.user_type === "driver"
-                        ? `/dashboard/company/driver/list`
-                        : `/dashboard/company/driver/list`
+                        ? `/dashboard/customer/job_posted`
+                        : `/dashboard/customer/job_posted`
+                    }
+                  >
+                    Dashboard
+                  </Typography>
+                ))}
+
+                {isAuthenticated &&
+                (user?.user_type == "driver" && (
+                  <Typography
+                    sx={{
+                      mx: 1,
+                      borderBottom: (theme) =>
+                        router.asPath.startsWith("/dashboard/driver/job_request")
+                          ? "2px solid"
+                          : "none",
+
+                      color: (theme) =>
+                        router.asPath.startsWith("/dashboard/driver/job_request")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderColor: (theme) =>
+                        router.asPath.startsWith("/dashboard/driver/job_request")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderBottom: router.asPath.startsWith("/dashboard/driver/job_request")
+                        ? "2px solid"
+                        : "",
+                      ...theme.typography.subtitle2,
+                      textDecoration: "none",
+                      fontSize: "1rem",
+                    }}
+                    component={Link}
+                    href={
+                      user?.user_type === "driver"
+                        ? `/dashboard/driver/job_request`
+                        : `/dashboard/driver/job_request`
                     }
                   >
                     Dashboard
@@ -550,7 +586,7 @@ const Header = (props) => {
                 ) : null)}
 
               {/* add button in driver login show */}
-              {isAuthenticated &&
+              {/* {isAuthenticated &&
                 (user?.user_type == "driver" ? (
                   <Typography
                     sx={{
@@ -581,7 +617,7 @@ const Header = (props) => {
                   >
                     View Jobs
                   </Typography>
-                ) : null)}
+                ) : null)} */}
 
               {/* add button in driver login show */}
               {isAuthenticated &&

@@ -534,9 +534,9 @@ const JobHistory = ({ formik }) => {
                                   alignItems: "flex-start",
                                 }}
                               >
-                                Customer Spend:{" "}
+                                {/* Customer Spend:{" "}
                                 <Iconify icon="bi:currency-pound" />
-                                {elem?.spentmoney}+
+                                {elem?.spentmoney}+ */}
                               </Typography>
                             </Stack>
                           </Box>

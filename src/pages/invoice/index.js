@@ -261,7 +261,7 @@ const InvoicePage = () => {
       </div>
       {!showPayment ? (
         <>
-      <Typography variant="h4" gutterBottom>
+      <Typography style={{textAlign:'center',fontWeight:'800',fontSize:'24px',padding:'15px 0px 90px 0px'}} variant="h4" gutterBottom>
         Invoices Page
       </Typography>
 
@@ -329,14 +329,14 @@ const InvoicePage = () => {
               {/* <TableCell>Action</TableCell> */}
               <TableCell>amount</TableCell>
               { user?.user_type === "company" && user?.profile?.company_type === "customer" &&  <TableCell>late amount</TableCell> }
-              <TableCell>Action </TableCell>
+              <TableCell style={{textAlign:'center'}}>Action </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             { currentRows.length > 0  ? 
             <>{ currentRows.map((row, index) => (
-
               <TableRow key={index}>
+              {console.log('rowwwwww',row)}
                 <TableCell>{indexOfFirstRow + index + 1}</TableCell>
                 <TableCell>{row.invoice_number}</TableCell>
                 <TableCell>{row.job_id}</TableCell>
@@ -375,14 +375,16 @@ const InvoicePage = () => {
                     onClick={() => viewInvoice(row.id)}
                   >
                     View Invoice
-                  </Button> <Button
+                  </Button> 
+                  { row.job.is_paid === 0 &&  row?.job.created_by === "company" && user?.profile?.company_type === "customer" &&    <Button
                     variant="contained"
                     color="secondary"
                     onClick={() => sendInvoice(row.id)}
                     style={{ marginLeft: 8 }}
                   >
                     Send Invoice
-                  </Button>   </TableCell>
+                  </Button>   }
+                  </TableCell>
               </TableRow>
               ))} </> : <>
               <h1 style={{display:'flex',justifyContent:'center',alignItems:'center',paddingTop:'30px',fontWeight:'700',color:'#000',fontSize:'20px'}}> No Data Found </h1>

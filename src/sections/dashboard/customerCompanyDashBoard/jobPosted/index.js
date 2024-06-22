@@ -760,6 +760,10 @@ const DashboardJobPost = ({ formik }) => {
                                       </Badge>
                                     </Box>
                                     <Box>
+                                    {   !item?.status === 1 ||
+                                      !item?.status === 2 ||
+                                      !item.status === 3 ||
+                                      !item?.status === 4  &&
                                       <Button
                                         color="dark"
                                         fullWidth
@@ -783,7 +787,7 @@ const DashboardJobPost = ({ formik }) => {
                                         }}
                                       >
                                         Edit Job
-                                      </Button>
+                                      </Button> }
                                     </Box>
                                     {item?.bid_id &&
                                       item?.bid_id !== null &&

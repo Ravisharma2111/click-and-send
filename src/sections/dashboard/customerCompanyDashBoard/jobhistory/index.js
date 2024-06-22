@@ -39,7 +39,7 @@ const JobHistory = ({ formik }) => {
   const dispatch = useDispatch();
   const {
     jobHistory: { pageCount, data, page, pageSize, dataCount },
-  } = useSelector((state) => state.companyJob);
+  } = useSelector((state) => state.customerJob);
   const [layout, setLayout] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [select, setSelect] = React.useState("new");
@@ -62,7 +62,6 @@ const JobHistory = ({ formik }) => {
       })
     );
   }, [page, pageSize, date, search]);
-
 
 
   return (
@@ -537,9 +536,9 @@ const JobHistory = ({ formik }) => {
                                   alignItems: "flex-start",
                                 }}
                               >
-                                Customer Spend:{" "}
+                                {/* Customer Spend:{" "}
                                 <Iconify icon="bi:currency-pound" />
-                                {elem?.spentmoney}+
+                                {elem?.spentmoney}+ */}
                               </Typography>
                             </Stack>
                           </Box>

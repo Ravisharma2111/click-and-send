@@ -58,6 +58,7 @@ const DashboardJobPost = ({ formik }) => {
   const [showPayment, setShowPayment] = useState(false);
   // Add for filter
   const [paymentDetails, setPaymentDetails] = useState(null);
+  const address =  user?.profile?.address
   const addressDetail = {
     address: [{ type: "pickup" }, { type: "delivery" }],
   };
@@ -107,6 +108,15 @@ const DashboardJobPost = ({ formik }) => {
     setPaymentDetails(item);
     setShowPayment(true);
   };
+
+  const handleAddNewJob = () => {
+    if (!address || address.trim() === "") {
+      router.push("/customer/profile");
+    } else {
+      router.push("/dashboard/customer/job_post_form/create");
+    }
+  };
+
 
   return (
     <React.Fragment>
@@ -173,12 +183,7 @@ const DashboardJobPost = ({ formik }) => {
                       startIcon={<Add />}
                       variant="contained"
                       fullWidth
-                      onClick={() =>{
-                        adress?
-                        router.push("/dashboard/customer/job_post_form/create"):
-                        router.push("/customer/profile")
-                      }
-                      }
+                      onClick={handleAddNewJob}
                     >
                       Add New Job
                     </Button>
@@ -693,7 +698,7 @@ const DashboardJobPost = ({ formik }) => {
                                     }}
                                   >
                                     {/* Bid: <Iconify icon="bi:currency-pound" /> */}
-                                    {item?.budget}
+                                    {/* {item?.budget} */}
                                   </Typography>
 
                                   <Stack direction="row" spacing={2}>
@@ -773,7 +778,7 @@ const DashboardJobPost = ({ formik }) => {
                                     </Box>
                                     {item?.bid_id &&
                                       item?.bid_id !== null &&
-                                      item?.status !== 1 && (
+                                       item?.status === 3 && item?.is_paid == 1 && (
                                         <Box>
                                           <Button
                                             color="primary"
