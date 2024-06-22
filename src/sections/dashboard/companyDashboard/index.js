@@ -89,7 +89,7 @@ const CustomerDashboard = () => {
                           >
                             Add Job
                           </Button>
-                        </Box> */} */}
+                        </Box> */} 
 
                       </Stack>
                     </Stack>
