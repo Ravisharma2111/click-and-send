@@ -59,6 +59,7 @@ const DashboardJobPost = ({ formik }) => {
   const [showPayment, setShowPayment] = useState(false);
   const [companyData, setCompanyData] = useState([]);
 
+  const address =  user?.profile?.address
   // Add for filter
   const [paymentDetails, setPaymentDetails] = useState(null);
   const addressDetail = {
@@ -121,6 +122,16 @@ const DashboardJobPost = ({ formik }) => {
     setPaymentDetails(item);
     setShowPayment(true);
   };
+
+  const handleAddNewJob = () => {
+    if (!address || address.trim() === "") {
+      router.push("/company/profile");
+    } else {
+      router.push("/dashboard/company/job_post_form/create");
+    }
+  };
+
+
   return (
     <React.Fragment>
       <Box py={3} pb={12}>
@@ -186,12 +197,7 @@ const DashboardJobPost = ({ formik }) => {
                       startIcon={<Add />}
                       variant="contained"
                       fullWidth
-                      onClick={() =>{
-                        adress?
-                        router.push("/dashboard/company/job_post_form/create"):
-                        router.push("/company/profile")
-                      }
-                      }
+                      onClick={handleAddNewJob}
                     >
                       Add New Job
                     </Button>
