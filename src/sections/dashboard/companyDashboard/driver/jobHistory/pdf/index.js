@@ -88,7 +88,7 @@ const ViewHistoryPDF = () => {
           </Box>
         </Container>
       </Box>{" "}
-    </React.Fragment>``
+    </React.Fragment>
   );
 };
 
