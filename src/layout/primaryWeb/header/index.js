@@ -349,45 +349,6 @@ const Header = (props) => {
 
 
                 {isAuthenticated &&
-                (user?.user_type == "company" &&
-                user?.profile?.company_type === "driver" ? (
-                  <Typography
-                    sx={{
-                      mx: 1,
-                      borderBottom: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
-                          ? "2px solid"
-                          : "none",
-
-                      color: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
-                          ? theme.palette.primary.main
-                          : theme.palette.text.primary,
-                      borderColor: (theme) =>
-                        router.asPath.startsWith("/dashboard/company/driver/list")
-                          ? theme.palette.primary.main
-                          : theme.palette.text.primary,
-                      borderBottom: router.asPath.startsWith("/dashboard/company/driver/list")
-                        ? "2px solid"
-                        : "",
-                      ...theme.typography.subtitle2,
-                      textDecoration: "none",
-                      fontSize: "1rem",
-                    }}
-                    component={Link}
-                    href={
-                      user?.user_type === "driver"
-                        ? `/dashboard/company/driver/list`
-                        : `/dashboard/company/driver/list`
-                    }
-                  >
-                    Dashboard
-                  </Typography>
-                ) : (
-                 null
-                ))}
-
-                {isAuthenticated &&
                 (user?.user_type == "customer" && (
                   <Typography
                     sx={{
@@ -459,6 +420,76 @@ const Header = (props) => {
                   </Typography>
                 ))}
                 
+                {isAuthenticated &&
+                (user?.user_type == "company" &&
+                user?.profile?.company_type === "driver" ? (
+                  <Typography
+                    sx={{
+                      mx: 1,
+                      borderBottom: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/job_request")
+                          ? "2px solid"
+                          : "none",
+
+                      color: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/job_request")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderColor: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/job_request")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderBottom: router.asPath.startsWith("/dashboard/company/driver/job_request")
+                        ? "2px solid"
+                        : "",
+                      ...theme.typography.subtitle2,
+                      textDecoration: "none",
+                      fontSize: "1rem",
+                    }}
+                    component={Link}
+                    href={
+                        `/dashboard/company/driver/job_request`
+                    }
+                  >
+                    Dashboard
+                  </Typography>
+                ) : (
+                 null
+                ))}
+                {isAuthenticated &&
+                (user?.user_type == "company" &&
+                user?.profile?.company_type === "driver" ? (
+                  <Typography
+                    sx={{
+                      mx: 1,
+                      borderBottom: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/list")
+                          ? "2px solid"
+                          : "none",
+                
+                      color: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/list")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderColor: (theme) =>
+                        router.asPath.startsWith("/dashboard/company/driver/list")
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderBottom: router.asPath.startsWith("/dashboard/company/driver/list")
+                        ? "2px solid"
+                        : "",
+                      ...theme.typography.subtitle2,
+                      textDecoration: "none",
+                      fontSize: "1rem",
+                    }}
+                    component={Link}
+                    href={`/dashboard/company/driver/list`}
+                  >
+                    Driver List
+                  </Typography>
+                ) : (
+                 null
+                ))}
 
               {/* {isAuthenticated &&
                 (user?.user_type == "customer" ? (
@@ -498,24 +529,24 @@ const Header = (props) => {
                       mx: 1.5,
                       pr: 1,
                       borderBottom: (theme) =>
-                        router.asPath === `#` ? "2px solid" : "none",
+                        router.asPath === `/dashboard/company/driver/active_jobs` ? "2px solid" : "none",
                       color: (theme) =>
-                        router.asPath === `#`
+                        router.asPath === `/dashboard/company/driver/active_jobs`
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
                       borderColor: (theme) =>
-                        router.asPath === `#`
+                        router.asPath === `/dashboard/company/driver/active_jobs`
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
-                      borderBottom: router.asPath === `#` ? "2px solid" : "",
+                      borderBottom: router.asPath === `/dashboard/company/driver/active_jobs` ? "2px solid" : "",
                       ...theme.typography.subtitle2,
                       textDecoration: "none",
                       fontSize: "1rem",
                     }}
                     component={Link}
-                    href={`#`}
+                    href={`/dashboard/company/driver/active_jobs`}
                   >
-                    Job list
+                    Active Jobs
                   </Typography>
                 ) : null)}
               {/* {isAuthenticated &&
@@ -796,7 +827,7 @@ const Header = (props) => {
               ) : null )} */}
 
               {isAuthenticated &&
-                (user?.user_type == "company" ? (
+                (user?.user_type == "company" &&  user.profile.company_type == 'customer'   ? (
                   <Typography
                     sx={{
                       // mx: 1.5,
@@ -827,7 +858,47 @@ const Header = (props) => {
                       fontSize: "1rem",
                     }}
                     component={Link}
-                    href={`/dashboard/${user?.user_type}/subscription`}
+                    href={ `/dashboard/${user?.user_type}/subscription`}
+                    // href={`/dashboard/${user?.user_type}/subscription`}
+                  >
+                    Subscription
+                  </Typography>
+                ) : null)}
+
+                {isAuthenticated &&
+                (user?.user_type == "company" &&  user.profile.company_type == 'driver'   ? (
+                  <Typography
+                    sx={{
+                      // mx: 1.5,
+                      pr: 1,
+                      borderBottom: (theme) =>
+                        router.asPath ===
+                        `/dashboard/company/driver/subscription`
+                          ? "2px solid"
+                          : "none",
+
+                      color: (theme) =>
+                        router.asPath ===
+                        `/dashboard/company/driver/subscription`
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderColor: (theme) =>
+                        router.asPath ===
+                        `/dashboard/company/driver/subscription`
+                          ? theme.palette.primary.main
+                          : theme.palette.text.primary,
+                      borderBottom:
+                        router.asPath ===
+                        `/dashboard/company/driver/subscription`
+                          ? "2px solid"
+                          : "",
+                      ...theme.typography.subtitle2,
+                      textDecoration: "none",
+                      fontSize: "1rem",
+                    }}
+                    component={Link}
+                    href={ `/dashboard/company/driver/subscription`}
+                    // href={`/dashboard/${user?.user_type}/subscription`}
                   >
                     Subscription
                   </Typography>
@@ -960,6 +1031,26 @@ const Header = (props) => {
                       </MenuItem>
                     </Link>
                     {user?.user_type == "driver" && (
+                      <Link
+                        href="/StripeConnectionPage"
+                        passHref
+                        style={{ textDecoration: "none" }}
+                      >
+                        <MenuItem
+                          sx={{
+                            color: "#212b36",
+                            fontWeight: "500",
+                            lineHeight: "1.5",
+                          }}
+                          onClick={() =>
+                            handleMenuItemClick("StripeConnectionPage")
+                          }
+                        >
+                          Stripe Connection
+                        </MenuItem>
+                      </Link>
+                    )}
+                    {user?.user_type == "company"  && user.profile.company_type === 'driver' && (
                       <Link
                         href="/StripeConnectionPage"
                         passHref

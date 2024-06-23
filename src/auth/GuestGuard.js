@@ -35,7 +35,7 @@ export default function GuestGuard({ children }) {
         } else if (user?.user_type === "company" && user?.company?.company_type === "customer" ) {
           push("/dashboard/company/job_posted");
         }else if (user?.user_type === "company" && user?.company?.company_type === "driver" ) {
-          push("/dashboard/company/driver/list");
+          push("/dashboard/company/driver/job_request");
         }
       }
     }
