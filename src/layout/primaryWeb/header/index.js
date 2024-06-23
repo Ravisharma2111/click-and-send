@@ -453,7 +453,7 @@ const Header = (props) => {
                   >
                     Dashboard
                   </Typography>
-                ) : (
+                ) : ( 
                  null
                 ))}
                 {isAuthenticated &&
