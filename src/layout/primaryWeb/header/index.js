@@ -827,7 +827,7 @@ const Header = (props) => {
               ) : null )} */}
 
               {isAuthenticated &&
-                (user?.user_type == "company" &&  user.profile.company_type == 'customer'   ? (
+                (user?.user_type == "company" &&  user?.profile?.company_type == 'customer'   ? (
                   <Typography
                     sx={{
                       // mx: 1.5,
@@ -866,7 +866,7 @@ const Header = (props) => {
                 ) : null)}
 
                 {isAuthenticated &&
-                (user?.user_type == "company" &&  user.profile.company_type == 'driver'   ? (
+                (user?.user_type == "company" &&  user?.profile?.company_type == 'driver'   ? (
                   <Typography
                     sx={{
                       // mx: 1.5,
@@ -1050,7 +1050,7 @@ const Header = (props) => {
                         </MenuItem>
                       </Link>
                     )}
-                    {user?.user_type == "company"  && user.profile.company_type === 'driver' && (
+                    {user?.user_type == "company"  && user?.profile?.company_type === 'driver' && (
                       <Link
                         href="/StripeConnectionPage"
                         passHref
