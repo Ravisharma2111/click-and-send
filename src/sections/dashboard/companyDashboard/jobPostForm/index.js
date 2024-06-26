@@ -109,7 +109,7 @@ const JobPostForm = ({
                 <Typography color="text.primary">
                   {id === "create" ? "Add New Job" : "Edit Job"}
                 </Typography>
-              </Breadcrumbs>
+              </Breadcrumbs> 
             </Box>
             <Box>
               <Card sx={{ borderRadius: "0px" }}>
