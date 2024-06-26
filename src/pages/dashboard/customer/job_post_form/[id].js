@@ -213,7 +213,7 @@ const PostJob = () => {
   const formik = useFormik({
     initialValues: {
       user_id: user?.id,
-      created_by: user?.user_type ,
+      created_by: 'customer' ,
       name: "",
       vehicle: 0,
       vehical_type: 0,
@@ -268,7 +268,7 @@ console.log('values values',values)
           .then((response) => {
             if (response?.status === 200) {
               setFieldValue("items", JSON.parse(values?.items));
-              router.push(`/dashboard/${user?.user_type}/job_posted`);
+              router.push(`/dashboard/customer/job_posted`);
                // succes
           enqueueSnackbar(
             <Alert

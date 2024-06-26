@@ -587,22 +587,22 @@ const Header = (props) => {
                       pr: 1,
                       borderBottom: (theme) =>
                         router.asPath ===
-                        `/dashboard/${user?.user_type}/job_post_form/create`
+                        `/dashboard/company/job_post_form/create`
                           ? "2px solid"
                           : "none",
                       color: (theme) =>
                         router.asPath ===
-                        `/dashboard/${user?.user_type}/job_post_form/create`
+                        `/dashboard/company/job_post_form/create`
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
                       borderColor: (theme) =>
                         router.asPath ===
-                        `/dashboard/${user?.user_type}/job_post_form/create`
+                        `/dashboard/company/job_post_form/create`
                           ? theme.palette.primary.main
                           : theme.palette.text.primary,
                       borderBottom:
                         router.asPath ===
-                        `/dashboard/${user?.user_type}/job_post_form/create`
+                        `/dashboard/company/job_post_form/create`
                           ? "2px solid"
                           : "",
                       ...theme.typography.subtitle2,
@@ -610,7 +610,7 @@ const Header = (props) => {
                       fontSize: "1rem",
                     }}
                     component={Link}
-                    href={`/dashboard/${user?.user_type}/job_post_form/create`}
+                    href={`/dashboard/company/job_post_form/create`}
                   >
                     Add Jobs
                   </Typography>

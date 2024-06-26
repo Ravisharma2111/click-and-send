@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { PrimaryWebLayout } from "@/layout";
 import { useFormik } from "formik";
-import JobPostForm from "@/sections/dashboard/customerDashboard/jobPostForm";
+import JobPostForm from "@/sections/dashboard/companyDashboard/jobPostForm";
 
 import { every, isEmpty, reject } from "lodash";
 import axiosInstance from "@/utils/axios";
@@ -213,7 +213,7 @@ const PostJob = () => {
   const formik = useFormik({
     initialValues: {
       user_id: user?.id,
-      created_by: user?.user_type ,
+      created_by: 'company' ,
       name: "",
       vehicle: 0,
       vehical_type: 0,
@@ -268,7 +268,7 @@ console.log('values values',values)
           .then((response) => {
             if (response?.status === 200) {
               setFieldValue("items", JSON.parse(values?.items));
-              router.push(`/dashboard/${user?.user_type}/job_posted`);
+              router.push(`/dashboard/company/job_posted`);
                // succes
           enqueueSnackbar(
             <Alert
@@ -378,7 +378,7 @@ console.log('values values',values)
             .then((response) => {
               if (response?.status === 200) {
                 setFieldValue("items", JSON.parse(values?.items));
-                router.push("/dashboard/customer/job_posted");
+                router.push("/dashboard/company/job_posted");
                 // succes
           enqueueSnackbar(
             <Alert

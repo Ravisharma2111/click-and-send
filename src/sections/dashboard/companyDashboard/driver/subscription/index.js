@@ -144,7 +144,7 @@ const SubscriptionsPage = () => {
               color="white"
               variant="h2"
             >
-              Our Subscription Plans 1
+              Our Subscription Plans
             </Typography>
             <Typography variant="body1" component="p" color="common.white">
               Choose the right plan made for you
@@ -300,7 +300,7 @@ const SubscriptionsPage = () => {
                                       fullWidth
                                       variant="contained"
                                       sx={{ px: 5 }}
-                                      onClick={() => handleCheckout(plan)}
+                                      // onClick={() => handleCheckout(plan)}
                                     >
                                       Activate Plan
                                     </Button>
