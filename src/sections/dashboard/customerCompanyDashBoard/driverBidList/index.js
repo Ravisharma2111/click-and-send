@@ -278,7 +278,7 @@ const BidList = () => {
                           fontSize={28}
                           color="primary"
                           fontWeight={600}
-                        > 12
+                        >
                           Applied Bids
                         </Typography> 
                       </Box>
