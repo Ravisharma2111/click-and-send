@@ -717,7 +717,7 @@ const DashboardJobPost = ({ formik }) => {
                                   </Typography>
 
                                   <Stack direction="row" spacing={2}>
-                                    {item?.bid_id &&
+                                    {/* {item?.bid_id &&
                                       item?.bid_id !== null &&
                                       item?.status === 2 &&
                                       item?.is_paid === 0 &&  user?.user_type == 'company' && user?.profile.company_type == 'customer' && (
@@ -733,10 +733,10 @@ const DashboardJobPost = ({ formik }) => {
                                               fontWeight: 500,
                                             }}
                                           >
-                                            Pay
+                                            Pay 1
                                           </Button>
                                          </Box>
-                                      )}
+                                      )} */}
                                     <Box>
                                       <Badge
                                         badgeContent={
@@ -794,7 +794,7 @@ const DashboardJobPost = ({ formik }) => {
                                     </Box>
                                     {item?.bid_id &&
                                       item?.bid_id !== null &&
-                                      item?.status !== 1 && (
+                                      item?.status === 3 && (
                                         <Box>
                                           <Button
                                             color="primary"
